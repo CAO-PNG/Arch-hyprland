@@ -1,0 +1,14 @@
+[Unit]
+Description=Clash Verge Service
+After=network.target
+
+[Service]
+Type=simple
+Environment="__NV_DISABLE_EXPLICIT_SYNC=1"
+ExecStartPre=/bin/bash -c "sleep 2"
+ExecStart=/usr/bin/clash-verge service
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,9 @@
+[tool.ruff.lint]
+# F403: from pwn import *
+# F405: 变量可能来自通配符导入
+# E731: lambda 赋值
+ignore = ["F403", "F405", "E731"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

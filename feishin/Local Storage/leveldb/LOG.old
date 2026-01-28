@@ -1,0 +1,6 @@
+2026/01/18-14:15:57.795 a592e Reusing MANIFEST /home/source/.config/feishin/Local Storage/leveldb/MANIFEST-000001
+2026/01/18-14:15:57.800 a592e Recovering log #3
+2026/01/18-14:15:57.801 a592e Reusing old log /home/source/.config/feishin/Local Storage/leveldb/000003.log 
+2026/01/18-14:40:20.274 a592e Level-0 table #5: started
+2026/01/18-14:40:20.280 a592e Level-0 table #5: 15830 bytes OK
+2026/01/18-14:40:20.282 a592e Delete type=0 #3

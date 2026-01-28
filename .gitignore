@@ -1,0 +1,20 @@
+# 忽略缓存
+*cache/
+*Cache/
+*logs/
+
+# 忽略浏览器和敏感软件
+google-chrome/
+microsoft-edge/
+discord/
+Spotify/
+Slack/
+
+# 忽略系统特定数据
+pulse/
+dconf/
+menus/
+
+# 忽略临时文件
+*.tmp
+*.log

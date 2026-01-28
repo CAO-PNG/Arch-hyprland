@@ -1,0 +1,20 @@
+[Unit]
+Description=Linux Wallpaper Engine (Force Wayland)
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=simple
+Environment=XDG_RUNTIME_DIR=%t
+Environment=DISPLAY=
+Environment=__GL_THREADED_OPTIMIZATIONS=0
+Environment=GBM_BACKEND=nvidia-drm
+ExecStart=/home/source/bin/toggle_wallpaper.sh
+Restart=on-failure
+RestartSec=2
+RuntimeMaxSec=1h
+TimeoutStopSec=10
+
+[Install]
+WantedBy=graphical-session.target
+

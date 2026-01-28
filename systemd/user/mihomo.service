@@ -1,0 +1,11 @@
+[Unit]
+Description=Mihomo Daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mihomo -d %h/.config/mihomo
+Restart=always
+
+[Install]
+WantedBy=default.target

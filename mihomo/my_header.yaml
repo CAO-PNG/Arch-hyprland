@@ -1,0 +1,50 @@
+# 1. 基础端口设置
+mixed-port: 7897 # 合并 HTTP 和 SOCKS 端口到 7897
+allow-lan: true # 允许局域网访问
+mode: Rule # 规则模式
+log-level: info # 日志级别
+ipv6: false # 关闭 IPv6，防止流量直连泄露
+
+# 2. 面板与外部控制
+external-controller: 127.0.0.1:9090
+external-ui: ui # 对应 ~/.config/mihomo/ui 目录
+secret: "" # API 密码，可留空
+
+# 3. TUN 模式设置 (核心：解决权限与流量接管)
+tun:
+  enable: true # 开启 TUN
+  stack: system # Linux 建议用 system，配合 setcap 权限
+  auto-route: true # 自动设置全局路由
+  auto-detect-interface: true # 自动检测物理网卡
+  dns-hijack:
+    - any:53 # 劫持所有 53 端口的 DNS 请求
+  mtu: 1400 # 略微调低 MTU，解决部分游戏平台连接超时问题
+  udp-timeout: 300 # 延长 UDP 超时，防止 Steam 购物车会话中断
+
+# 4. DNS 增强配置 (适配 TUN 模式)
+dns:
+  enable: true
+  enhanced-mode: fake-ip # 搭配 fake-ip-filter 使用
+  nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+  direct-nameserver:
+    - 114.114.114.114
+  # 彻底解决 Steam/Epic 等平台报错的关键：
+  fake-ip-filter:
+    # Steam 全域名过滤
+    - "*.steampowered.com"
+    - "*.steamstatic.com"
+    - "*.steamcommunity.com"
+    - "*.steamusercontent.com"
+    - "*.steamcontent.com"
+    - "*.steamserver.net"
+    - "*.steamcore.net"
+    - "*.steam-chat.com"
+    - "*.steambroadcast.com"
+    - "+.steam"
+    # 常用测速与基础域名
+    - "n302.st"
+    - "speedtest.net"
+    - "*.msftconnecttest.com"
+    - "*.msftncsi.com"
