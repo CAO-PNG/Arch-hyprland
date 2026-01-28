@@ -1,0 +1,119 @@
+{
+  "layer": "top",
+  "output": [
+    "*"
+  ],
+  "position": "top",
+  "height": 30,
+  "margin-top": 5,
+  "margin-left": 10,
+  "margin-right": 10,
+  "spacing": 8,
+  "exclusive": true,
+  "passthrough": false,
+  "reload_style_on_change": true,
+  "include": [
+    "$XDG_CONFIG_HOME/waybar/includes/includes.json"
+  ],
+  // --- 布局排布 ---
+  "modules-left": [
+    "group/leaf-inverse",
+    "custom/cava",
+    "group/pill-music",
+    "custom/lyrics"
+  ],
+  "modules-center": [
+    "custom/arch-icon",
+    "group/pill#1",
+    "group/pill-in#center",
+    "group/pill#2"
+  ],
+  "modules-right": [
+    "custom/obs",
+    "group/leaf"
+  ],
+  // --- 自定义模块定义 ---
+  "custom/obs": {
+    "format": "{}",
+    "exec": "pgrep obs && echo '<span color=\"#f38ba8\">󰕧 OBS</span>' || echo '<span color=\"#565f89\">󰑊 OBS</span>'",
+    "interval": 3,
+    "on-click": "/usr/bin/obs"
+  },
+  "custom/lyrics": {
+    "exec": "~/.config/waybar/scripts/lyrics.sh",
+    "interval": 2,
+    "format": "{}",
+    "max-length": 45
+  },
+  "mpris": {
+    "format": "{player_icon} <b>{title}</b>",
+    "player-icons": {
+      "default": "󰝚",
+      "qqmusic": "󰓇"
+    },
+    "max-length": 30,
+    "on-click": "playerctl play-pause"
+  },
+  "custom/arch-icon": {
+    "format": " <span font='14' color='#89b4fa'>󰣇</span> ",
+    "on-click": "alacritty -e btop"
+  },
+  // --- 分组定义 ---
+  "group/pill#2": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/hyprsunset",
+      "idle_inhibitor"
+    ]
+  },
+  "group/pill#1": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/weather"
+    ]
+  },
+  "group/leaf-inverse": {
+    "orientation": "inherit",
+    "modules": [
+      "hyprland/workspaces",
+      "wlr/taskbar"
+    ]
+  },
+  "group/pill-in#center": {
+    "orientation": "inherit",
+    "modules": [
+      "keyboard-state",
+      "clock",
+      "custom/updates",
+      "custom/keybindhint",
+      "custom/gamemode"
+    ]
+  },
+  "group/pill-music": {
+    "orientation": "inherit",
+    "modules": [
+      "mpris"
+    ]
+  },
+  "group/leaf": {
+    "orientation": "inherit",
+    "modules": [
+      "privacy",
+      "backlight",
+      "tray",
+      "network#bandwidthUpBytes",
+      "network#bandwidthDownBytes",
+      "custom/bluetooth",
+      "pulseaudio",
+      "pulseaudio#microphone",
+      "battery",
+      "power-profiles-daemon",
+      "custom/gpuinfo",
+      "custom/cpuinfo",
+      "custom/sensorsinfo",
+      "custom/swaync",
+      "custom/dunst",
+      "custom/hyde-menu"
+    ]
+  }
+}

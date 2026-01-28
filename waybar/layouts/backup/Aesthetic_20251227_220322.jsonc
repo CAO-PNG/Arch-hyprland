@@ -1,0 +1,61 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "height": 31,
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "reload_style_on_change": true,
+  // 核心：引入 HyDE 自动生成的模块定义
+  "include": [
+    "$XDG_CONFIG_HOME/waybar/includes/includes.json"
+  ],
+  // 左侧：侧重于系统入口和工作区
+  "modules-left": [
+    "custom/hyde-menu", // HyDE 菜单图标
+    "group/pill-left", // 胶囊左半部分
+    "hyprland/workspaces#roman" // 罗马数字工作区（高逼格）
+  ],
+  // 中间：侧重于时间和多媒体
+  "modules-center": [
+    "group/pill-in" // 内部包含 clock 和 custom/weather
+  ],
+  // 右侧：侧重于硬件状态和功能开关
+  "modules-right": [
+    "group/pill-out", // 包含网络、蓝牙
+    "group/pill-down#right", // 包含音量、亮度
+    "custom/power" // 电源菜单
+  ],
+  // --- 组定义 (利用 HyDE 预设的样式) ---
+  "group/pill-left": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/cpuinfo",
+      "custom/gpuinfo"
+    ]
+  },
+  "group/pill-in": {
+    "orientation": "inherit",
+    "modules": [
+      "clock",
+      "custom/weather"
+    ]
+  },
+  "group/pill-out": {
+    "orientation": "inherit",
+    "modules": [
+      "network",
+      "bluetooth",
+      "battery"
+    ]
+  },
+  "group/pill-down#right": {
+    "orientation": "inherit",
+    "modules": [
+      "pulseaudio",
+      "backlight",
+      "tray"
+    ]
+  }
+}

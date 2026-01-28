@@ -1,0 +1,189 @@
+{
+  "layer": "top",
+  "output": [
+    "*"
+  ],
+  "position": "top",
+  "height": 30,
+  "margin-top": 5,
+  "margin-left": 10,
+  "margin-right": 10,
+  "spacing": 0,
+  "exclusive": true,
+  "passthrough": false,
+  "reload_style_on_change": true,
+  "include": [
+    "$XDG_CONFIG_HOME/waybar/includes/includes.json"
+  ],
+  /* --- 1) 模块排布：你写的顺序保持不变 --- */
+  "modules-left": [
+    "custom/left_div#1",
+    "group/leaf-inverse",
+    "custom/right_div#1",
+    "custom/cava",
+    "custom/right_div#2",
+    "group/pill-music",
+    "custom/right_div#3",
+    "custom/lyrics",
+    "custom/right_div#4"
+  ],
+  "modules-center": [
+    "custom/left_div#5",
+    "custom/arch-icon",
+    "custom/right_div#5",
+    "group/pill#1",
+    "custom/right_div#6",
+    "group/pill-in#center",
+    "custom/right_div#7",
+    "group/pill#2",
+    "custom/right_div#8"
+  ],
+  "modules-right": [
+    "custom/left_div#9",
+    "custom/obs",
+    "custom/right_div#9",
+    "group/leaf",
+    "custom/right_div#10"
+  ],
+  /* --- 2) 你的自定义模块（你原样保留） --- */
+  "custom/obs": {
+    "format": "{}",
+    "exec": "pgrep obs && echo '<span color=\"#f38ba8\">󰕧 OBS</span>' || echo '<span color=\"#565f89\">󰑊 OBS</span>'",
+    "interval": 3,
+    "on-click": "/usr/bin/obs"
+  },
+  "custom/lyrics": {
+    "exec": "python3 ~/.config/waybar/scripts/lyrics_bingo.py",
+    "interval": 2,
+    "format": "{}",
+    "max-length": 50,
+    "escape": true
+  },
+  "mpris": {
+    "format": "{player_icon} <b>{title}</b>",
+    "player-icons": {
+      "default": "󰝚",
+      "qqmusic": "󰓇"
+    },
+    "max-length": 30,
+    "on-click": "playerctl play-pause"
+  },
+  "custom/arch-icon": {
+    "format": " <span font='14' color='#89b4fa'>󰣇</span> ",
+    "on-click": "alacritty -e btop"
+  },
+  /* --- 3) 分组定义（divider 不要放进这里！） --- */
+  "group/pill#2": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/hyprsunset",
+      "idle_inhibitor"
+    ]
+  },
+  "group/pill#1": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/weather"
+    ]
+  },
+  "group/leaf-inverse": {
+    "orientation": "inherit",
+    "modules": [
+      "hyprland/workspaces",
+      "wlr/taskbar"
+    ]
+  },
+  "group/pill-in#center": {
+    "orientation": "inherit",
+    "modules": [
+      "keyboard-state",
+      "clock",
+      "custom/updates",
+      "custom/keybindhint",
+      "custom/gamemode"
+    ]
+  },
+  "group/pill-music": {
+    "orientation": "inherit",
+    "modules": [
+      "mpris"
+    ]
+  },
+  "group/leaf": {
+    "orientation": "inherit",
+    "modules": [
+      "privacy",
+      "backlight",
+      "tray",
+      "network#bandwidthUpBytes",
+      "network#bandwidthDownBytes",
+      "custom/bluetooth",
+      "pulseaudio",
+      "pulseaudio#microphone",
+      "battery",
+      "power-profiles-daemon",
+      "custom/gpuinfo",
+      "custom/cpuinfo",
+      "custom/sensorsinfo",
+      "custom/swaync",
+      "custom/dunst",
+      "custom/hyde-menu"
+    ]
+  },
+  /* --- 4) Divider modules（必须在顶层）--- */
+  /* 左边缘：透明背景上“切入”第一块 */
+  "custom/left_div#1": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right_div#1": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right_div#2": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right_div#3": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right_div#4": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/left_div#5": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right_div#5": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right_div#6": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right_div#7": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right_div#8": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/left_div#9": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right_div#9": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right_div#10": {
+    "format": "",
+    "tooltip": false
+  },
+  /* 其余模块（network#... / custom/weather / custom/cava 等）
+     由 includes.json 及其引用文件提供；避免在这里重复定义。 */
+}

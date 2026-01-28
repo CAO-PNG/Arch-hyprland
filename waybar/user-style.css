@@ -1,0 +1,142 @@
+/* =========================
+ * Waybar user-style.css (GTK CSS safe)
+ * - Lyrics: 防抖 + 截断（靠 max-length）+ Tooltip 统一样式
+ * ========================= */
+
+/* --- 1. 全局流云胶囊样式 --- */
+#workspaces, #taskbar, #custom-cava, #mpris, #custom-lyrics, #custom-obs,
+#group-leaf, #tray, #custom-weather, #group-pill-1, #group-pill-2, #pill-in {
+    background-color: rgba(30, 30, 46, 0.5);
+    border-radius: 16px;
+    margin: 2px 4px;
+    padding: 0 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-image: none;
+}
+
+/* --- 2. 莫兰迪色配色 --- */
+
+/* 音乐与歌词 */
+#mpris {
+    background: linear-gradient(135deg, rgba(147, 185, 160, 0.3) 0%, rgba(147, 185, 160, 0.1) 100%);
+    border: 1px solid rgba(147, 185, 160, 0.4);
+}
+
+/* 歌词模块：GTK CSS 兼容（不使用 max-width / box-sizing / text-overflow） */
+#custom-lyrics {
+    background: linear-gradient(135deg, rgba(147, 185, 160, 0.25) 0%, rgba(147, 185, 160, 0.05) 100%);
+    border: 1px solid rgba(147, 185, 160, 0.3);
+    color: #d1e7dd;
+    font-style: italic;
+    border-radius: 16px;
+    padding: 0 15px;
+
+    /* 防抖：固定最小宽度（GTK 支持） */
+    min-width: 320px;
+}
+
+/* 工作区与任务栏 */
+#workspaces, #taskbar {
+    background: linear-gradient(135deg, rgba(137, 180, 250, 0.2) 0%, rgba(137, 180, 250, 0.05) 100%);
+}
+#workspaces button.active {
+    background: rgba(137, 180, 250, 0.4);
+    color: white;
+    border-radius: 12px;
+}
+
+/* 中间时间组 */
+#pill-in {
+    background: linear-gradient(135deg, rgba(17, 17, 27, 0.85) 0%, rgba(30, 30, 46, 0.85) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #cdd6f4;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* OBS模块 */
+#custom-obs {
+    background: rgba(243, 139, 168, 0.15);
+    color: #f2cdcd;
+}
+
+/* 右侧系统监控组 */
+#group-leaf {
+    background: rgba(49, 50, 68, 0.4);
+}
+
+/* --- 3. 细节修正 (移除所有嵌套模块的独立背景) --- */
+#clock, #keyboard-state, #custom-updates, #network, #pulseaudio, #battery,
+#custom-cpuinfo, #custom-gpuinfo, #custom-sensorsinfo, #custom-swaync,
+#backlight, #privacy, #power-profiles-daemon, #custom-bluetooth {
+    background: transparent;
+    border: none;
+    padding: 0 6px;
+}
+
+/* 图标颜色 */
+#network { color: #94e2d5; }
+#pulseaudio { color: #f9e2af; }
+#battery { color: #a6e3a1; }
+#custom-cpuinfo { color: #f38ba8; }
+#custom-gpuinfo { color: #fab387; }
+
+/* --- 4. Tooltip 兼容（GTK tooltip 全局样式） --- */
+tooltip {
+    background: rgba(17, 17, 27, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    padding: 8px 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+tooltip label {
+    color: #cdd6f4;
+    font-style: normal;
+    font-size: 12.5px;
+    padding: 2px 4px;
+}
+
+/* --- 5. 小补强：高度一致 --- */
+#custom-lyrics, #mpris {
+    min-height: 26px;
+}
+/* ========== Lyrics: 强调与更丰富色彩（GTK-safe） ========== */
+
+/* 让歌词更“亮”：提高饱和度、对比度、并加轻微外发光 */
+#custom-lyrics {
+    /* 文字更亮更干净 */
+    color: rgba(236, 253, 245, 1);
+
+    /* 背景更“彩”，但仍保持你莫兰迪基调 */
+    background: linear-gradient(135deg,
+      rgba(34, 211, 238, 0.18) 0%,
+      rgba(167, 139, 250, 0.16) 45%,
+      rgba(251, 113, 133, 0.14) 100%
+    );
+
+    /* 边框更醒目 */
+    border: 1px solid rgba(147, 185, 160, 0.45);
+
+    /* 外发光：GTK 支持 box-shadow（你已有用过） */
+    box-shadow:
+      0 0 10px rgba(34, 211, 238, 0.18),
+      0 0 18px rgba(167, 139, 250, 0.14);
+
+    /* 让字更“立体”：轻微阴影（GTK 通常支持） */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* 悬停时更亮（交互突出） */
+#custom-lyrics:hover {
+    box-shadow:
+      0 0 12px rgba(34, 211, 238, 0.26),
+      0 0 22px rgba(167, 139, 250, 0.20);
+    border: 1px solid rgba(236, 253, 245, 0.35);
+}
+#custom-power {
+  padding: 0 12px;
+}
+#custom-power:hover {
+  background: rgba(243, 139, 168, 0.12);
+}
+
